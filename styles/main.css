@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #e3f2fd;
+    margin-bottom: 40px;
+    border-radius: 8px;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+button {
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1976d2;
+}
+
+@media screen and (max-width: 800px) {
+    nav {
+        display: none;
+    }
+
+    .content-hidden.show {
+        width: 100%;
+    }
+}

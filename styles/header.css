@@ -1,0 +1,173 @@
+header {
+    background-color: white;
+    position: relative;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo h1 {
+    color: #2196f3;
+    font-size: 1.8em;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #2196f3;
+}
+
+nav a.active {
+    color: #2196f3;
+}
+
+.cart {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-icon {
+    font-size: 1.5em;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8em;
+}
+
+.content-hidden{
+    display: none;
+}
+
+.content-hidden.show{
+    display: block;
+    position: absolute;
+    right: 0;
+}
+
+.content-hidden.show .content-cart{
+    position: absolute;
+    width: 400px;
+    background-color: #2196f3;
+    top: 20px;
+    right: 0;
+}
+
+/* Empty Cart */
+.cart-empty{
+    display: block;
+    padding: 15px 0;
+    color: black;
+    text-align: center;
+}
+
+.cart-empty.hide{
+    display: none;
+}
+
+.content-cart .content-cart-items div{
+    color: white;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.content-cart-items span{
+    cursor: pointer;
+}
+
+.content-cart-items a{
+    text-decoration: none;
+    color: white;
+}
+
+.container-courses{
+    scrollbar-width: thin;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    max-height: 400px;
+    overflow-y: auto;
+    border: #2196f3 2px solid;
+}
+
+.course{
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    border-top: #b1b1b12d 1px solid;
+}
+
+.course div{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 240px;
+}
+
+.container-courses a{
+    position: absolute;
+    right: 20px;
+    padding: 0 0 0 5px;
+    text-decoration: none;
+    background-color: #ffffff;
+    font-weight: 400;
+    z-index: 10;
+}
+
+.container-courses span {
+    color: black;
+    font-size: 16px;
+}
+
+.container-courses span:first-child {
+    font-weight: 500;
+}
+
+.container-courses span:last-child {
+    position: absolute;
+    left: 120px;
+    top: 40px;
+    font-weight: 400;
+    color: #2196f3;
+}
+
+.container-courses img{
+    height: 50px;
+    width: 80px;
+}
+
+@media screen and (max-width: 800px) {
+    .content-hidden.show .content-cart {
+        width: 100%;
+        left: 0;
+        right: 0;
+    }
+}
