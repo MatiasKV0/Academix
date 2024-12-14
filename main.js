@@ -4,12 +4,27 @@ const courses = document.querySelectorAll('.add-to-cart');
 const cartContainer = document.querySelector('.container-courses');
 const emptyCart = document.querySelector('.cart-empty');
 let count = parseInt(document.querySelector('.cart-count').textContent);
-let cart = [];
-let cartCourses = [...cart];
+let cartCourses = [];
 
-addEventListeners();
+
+document.addEventListener("DOMContentLoaded", () => {
+    addEventListeners();
+
+    const storageCourses = JSON.parse(localStorage.getItem('cartCourses')) || [];
+    storageCourses.forEach(course => {
+        const courseInfo = {
+            img: course.img,
+            price: course.price,
+            title: course.title,
+            id: course.id
+        };
+        createHTML(courseInfo);
+        ;});
+});
+
 
 function addEventListeners() {
+
     showCart.addEventListener('click', displayCart);
 
     hideCart.addEventListener('click', hideCartContent);
@@ -19,21 +34,25 @@ function addEventListeners() {
     cartContainer.addEventListener('click', removeCourse);
 }
 
+
 function displayCart(e) {
     e.preventDefault();
     showCart.nextElementSibling.classList.add('show');
 }
+
 
 function hideCartContent(e) {
     e.preventDefault();
     showCart.nextElementSibling.classList.remove('show');
 }
 
+
 function getCourseData(e) {
     e.preventDefault();
     let course = e.target;
     addCourse(course);
 }
+
 
 function addCourse(course) {
     const courseInfo = {
@@ -42,8 +61,11 @@ function addCourse(course) {
         title: course.parentElement.parentElement.firstElementChild.textContent,
         id: course.parentElement.parentElement.getAttribute('id')
     };
-    console.log(courseInfo);
+    createHTML(courseInfo);
+}
 
+
+function createHTML (courseInfo){
     const container = document.createElement('div');
     container.innerHTML = `
         <div class="course">
@@ -65,6 +87,7 @@ function addCourse(course) {
         document.querySelector('.cart-count').textContent = count;
         cartContainer.appendChild(container);
         cartCourses = [...cartCourses, courseInfo];
+        localStorage.setItem('cartCourses', JSON.stringify(cartCourses));
 
         emptyCart.classList.add('hide');
         if (cartCourses.length === 0) {
@@ -73,6 +96,7 @@ function addCourse(course) {
     }
 }
 
+
 function removeCourse(e) {
     e.preventDefault();
 
@@ -80,6 +104,7 @@ function removeCourse(e) {
         let courseId = e.target.getAttribute('data-id');
         cartCourses = cartCourses.filter(course => course.id !== courseId);
         e.target.parentElement.remove();
+        localStorage.setItem('cartCourses', JSON.stringify(cartCourses));
         count--;
         document.querySelector('.cart-count').textContent = count;
         if (cartCourses.length === 0) {
